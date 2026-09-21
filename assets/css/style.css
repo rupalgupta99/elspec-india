@@ -234,9 +234,11 @@ li.open .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
   inset: 0;
   background: linear-gradient(100deg, rgba(10,20,28,.88) 10%, rgba(10,20,28,.55) 55%, rgba(224,138,42,.28));
 }
-.hero-slide.slide-1 { background-image: radial-gradient(circle at 20% 30%, #2c6379, #0c1b23 70%); }
-.hero-slide.slide-2 { background-image: radial-gradient(circle at 75% 25%, #3a7386, #0c1b23 70%); }
-.hero-slide.slide-3 { background-image: radial-gradient(circle at 50% 75%, #244f61, #0c1b23 70%); }
+.hero-slide.slide-1 { background-image: url("../img/hero/hero-partner.png"); background-position: center; }
+.hero-slide.slide-2 { background-image: url("../img/hero/hero-analyzer.png"); background-position: center; }
+.hero-slide.slide-3 { background-image: url("../img/hero/hero-engineer.png"); background-position: center; }
+.hero-slide.slide-4 { background-image: url("../img/hero/hero-switchgear.png"); background-position: center; }
+.hero-slide.slide-5 { background-image: url("../img/hero/hero-textile.png"); background-position: center; }
 
 .hero-content { position: relative; z-index: 2; color: #fff; max-width: 640px; padding: 60px 0; }
 .hero-content .eyebrow { color: var(--accent-light); }
@@ -270,6 +272,15 @@ li.open .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
   letter-spacing: .03em;
   padding: 0 18px;
   white-space: nowrap;
+}
+.client-chip img {
+  max-width: 140px;
+  max-height: 42px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 1px 0 rgba(0,0,0,0.04));
 }
 
 /* ---------- Who we are ---------- */
