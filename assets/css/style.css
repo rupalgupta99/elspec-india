@@ -327,12 +327,26 @@ li.open .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
 .cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
 .case-card { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); background: #fff; }
 .case-thumb { height: 160px; background: linear-gradient(135deg, var(--navy), var(--navy-light)); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.5); font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+.case-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
 .case-body { padding: 22px; }
 .case-body .eyebrow { font-size: .7rem; }
 .case-body h3 { font-size: 1.02rem; }
 .case-body p { font-size: .88rem; }
 .case-body a { font-weight: 700; color: var(--navy); font-size: .85rem; }
 .case-body a:hover { color: var(--accent); }
+.case-study-intro { background: var(--bg-alt); }
+.case-study-intro-grid { display: grid; grid-template-columns: 1.35fr .65fr; gap: 48px; align-items: start; }
+.case-study-intro h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+.case-study-highlight { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow); }
+.case-study-highlight strong { display: block; color: var(--navy); font-size: 1.7rem; line-height: 1.1; margin-top: 8px; }
+.case-study-highlight p { margin: 4px 0 18px; font-size: .9rem; }
+.case-study-highlight p:last-child { margin-bottom: 0; }
+.case-study-pages { background: #fff; }
+.case-study-document { max-width: 894px; margin: 0 auto; display: grid; gap: 28px; }
+.case-study-document figure { margin: 0; background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.case-study-document img { width: 100%; height: auto; display: block; }
+.case-study-document figcaption { padding: 12px 16px; color: var(--text-muted); font-size: .86rem; font-weight: 600; }
+.case-study-hero h1 { max-width: 850px; margin-left: auto; margin-right: auto; }
 
 /* ---------- Testimonials ---------- */
 .testi-wrap { max-width: 760px; margin: 0 auto; position: relative; }
@@ -493,7 +507,7 @@ footer.site-footer { background: var(--navy-dark); color: #b9cdd6; padding: 48px
 
 /* ---------- Responsive ---------- */
 @media (max-width: 980px) {
-  .about-grid, .contact-grid, .form-grid { grid-template-columns: 1fr; }
+  .about-grid, .contact-grid, .form-grid, .case-study-intro-grid { grid-template-columns: 1fr; }
   .cards-grid { grid-template-columns: repeat(2, 1fr); }
   .cases-grid { grid-template-columns: repeat(2, 1fr); }
   .clients-full-grid { grid-template-columns: repeat(3, 1fr); }
