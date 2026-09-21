@@ -1,32 +1,57 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+  function closeDropdowns() {
+    document.querySelectorAll('nav.main-nav li.open').forEach(function (li) {
+      li.classList.remove('open');
+      var btn = li.querySelector('.nav-toggle');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  function closeMobileNav() {
+    var navToggle = document.querySelector('.nav-toggle-mobile');
+    var mainNav = document.querySelector('.main-nav');
+    if (mainNav) mainNav.classList.remove('open');
+    if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+  }
+
   /* ---------- Mobile nav toggle ---------- */
   var navToggle = document.querySelector('.nav-toggle-mobile');
   var mainNav = document.querySelector('.main-nav');
   if (navToggle && mainNav) {
+    navToggle.setAttribute('aria-expanded', 'false');
     navToggle.addEventListener('click', function () {
-      mainNav.classList.toggle('open');
+      var isOpen = mainNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    mainNav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        closeMobileNav();
+      });
     });
   }
 
   /* ---------- Dropdown menus (Services / Case Studies) ---------- */
   document.querySelectorAll('.has-dropdown > .nav-toggle').forEach(function (btn) {
+    btn.setAttribute('aria-expanded', 'false');
     btn.addEventListener('click', function (e) {
       e.preventDefault();
       var li = btn.closest('li');
       var wasOpen = li.classList.contains('open');
-      document.querySelectorAll('nav.main-nav li.open').forEach(function (openLi) {
-        openLi.classList.remove('open');
-      });
-      if (!wasOpen) li.classList.add('open');
+      closeDropdowns();
+      if (!wasOpen) {
+        li.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
     });
   });
 
   document.addEventListener('click', function (e) {
-    if (!e.target.closest('nav.main-nav li')) {
-      document.querySelectorAll('nav.main-nav li.open').forEach(function (li) {
-        li.classList.remove('open');
-      });
+    var navItem = e.target.closest('nav.main-nav li');
+    if (!navItem) {
+      closeDropdowns();
+      closeMobileNav();
     }
   });
 
