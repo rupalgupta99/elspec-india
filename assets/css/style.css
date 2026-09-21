@@ -261,26 +261,26 @@ li.open .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 64px;
-  min-width: 150px;
+  width: 190px;
+  height: 88px;
   background: #fff;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 10px;
   color: var(--text-muted);
   font-weight: 700;
   font-size: .85rem;
   letter-spacing: .03em;
-  padding: 0 18px;
+  padding: 12px 18px;
   white-space: nowrap;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(20, 44, 56, 0.05);
 }
 .client-chip img {
-  max-width: 140px;
-  max-height: 42px;
-  width: auto;
-  height: auto;
+  width: 154px;
+  height: 58px;
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 1px 0 rgba(0,0,0,0.04));
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.04));
 }
 
 /* ---------- Who we are ---------- */
