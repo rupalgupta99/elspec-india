@@ -107,6 +107,14 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  /* ---------- Case-study card marquee ---------- */
+  var caseTrack = document.querySelector('.cases-slider .cases-grid');
+  if (caseTrack && caseTrack.children.length) {
+    Array.prototype.slice.call(caseTrack.children).forEach(function (card) {
+      caseTrack.appendChild(card.cloneNode(true));
+    });
+  }
+
   /* ---------- Testimonials carousel ---------- */
   var testiSlides = document.querySelectorAll('.testi-slide');
   var prevBtn = document.querySelector('.testi-nav .prev');
