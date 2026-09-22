@@ -239,6 +239,9 @@ li.open .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
 .hero-slide.slide-3 { background-image: url("../img/hero/hero-engineer.png"); background-position: center; }
 .hero-slide.slide-4 { background-image: url("../img/hero/hero-switchgear.png"); background-position: center; }
 .hero-slide.slide-5 { background-image: url("../img/hero/hero-textile.png"); background-position: center; }
+.hero-slide.slide-6 { background-image: url("../img/case-study/automotive/page-1.png"); background-position: center 18%; }
+.hero-slide.slide-7 { background-image: url("../img/case-study/shree-dinesh-mill/page-1.png"); background-position: center 18%; }
+.hero-slide.slide-8 { background-image: url("../img/case-study/india-wind/page-1.png"); background-position: center 18%; }
 
 .hero-content { position: relative; z-index: 2; color: #fff; max-width: 640px; padding: 60px 0; }
 .hero-content .eyebrow { color: var(--accent-light); }
