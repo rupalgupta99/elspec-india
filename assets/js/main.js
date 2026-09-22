@@ -59,6 +59,30 @@ document.addEventListener('DOMContentLoaded', function () {
   var slides = document.querySelectorAll('.hero-slide');
   var dots = document.querySelectorAll('.hero-dots button');
   if (slides.length > 1) {
+    var heroEyebrow = document.querySelector('[data-hero-eyebrow]');
+    var heroTitle = document.querySelector('[data-hero-title]');
+    var heroDescription = document.querySelector('[data-hero-description]');
+    var heroPrimary = document.querySelector('[data-hero-primary]');
+    var heroSecondary = document.querySelector('[data-hero-secondary]');
+    var heroContent = [
+      ['Elspec India', 'When Power Meets Quality', "Measure | Control | Resolve — bringing Elspec's globally proven power quality analyzers, monitoring software and real-time compensation solutions to Indian industry, utilities and commercial enterprises.", 'Know More', 'index.html#what-we-do', 'Contact Us', 'index.html#contact'],
+      ['Elspec India', 'When Power Meets Quality', "Measure | Control | Resolve — bringing Elspec's globally proven power quality analyzers, monitoring software and real-time compensation solutions to Indian industry, utilities and commercial enterprises.", 'Know More', 'index.html#what-we-do', 'Contact Us', 'index.html#contact'],
+      ['Elspec India', 'When Power Meets Quality', "Measure | Control | Resolve — bringing Elspec's globally proven power quality analyzers, monitoring software and real-time compensation solutions to Indian industry, utilities and commercial enterprises.", 'Know More', 'index.html#what-we-do', 'Contact Us', 'index.html#contact'],
+      ['Elspec India', 'When Power Meets Quality', "Measure | Control | Resolve — bringing Elspec's globally proven power quality analyzers, monitoring software and real-time compensation solutions to Indian industry, utilities and commercial enterprises.", 'Know More', 'index.html#what-we-do', 'Contact Us', 'index.html#contact'],
+      ['Elspec India', 'When Power Meets Quality', "Measure | Control | Resolve — bringing Elspec's globally proven power quality analyzers, monitoring software and real-time compensation solutions to Indian industry, utilities and commercial enterprises.", 'Know More', 'index.html#what-we-do', 'Contact Us', 'index.html#contact'],
+      ['Case Study', 'Automotive Power Quality Improvement', 'Plant-wide power quality improvement across paint, assembly and press shops at a leading Indian automotive manufacturer.', 'Read Case Study', 'case-study-automotive.html', 'View All Case Studies', 'insights.html#case-studies'],
+      ['Case Study', 'Shree Dinesh Mill Power Quality Study', 'Power quality monitoring and improvement at Shree Dinesh Mill Ltd., Padra Road, Vadodara.', 'Read Case Study', 'case-study-shree-dinesh-mill.html', 'View All Case Studies', 'insights.html#case-studies'],
+      ['Success Story', 'Enhancing Wind Power Efficiency', "How Elspec India's G5 Digital Fault Recorder improved visibility, response times and operational efficiency across a major wind power network.", 'Read Success Story', 'case-study-india-wind.html', 'View All Case Studies', 'insights.html#case-studies']
+    ];
+    var updateHero = function (i) {
+      var copy = heroContent[i];
+      if (!copy) return;
+      if (heroEyebrow) heroEyebrow.textContent = copy[0];
+      if (heroTitle) heroTitle.textContent = copy[1];
+      if (heroDescription) heroDescription.textContent = copy[2];
+      if (heroPrimary) { heroPrimary.textContent = copy[3]; heroPrimary.href = copy[4]; }
+      if (heroSecondary) { heroSecondary.textContent = copy[5]; heroSecondary.href = copy[6]; }
+    };
     var current = 0;
     var rotate = function () {
       slides[current].classList.remove('active');
@@ -66,6 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
       current = (current + 1) % slides.length;
       slides[current].classList.add('active');
       if (dots[current]) dots[current].classList.add('active');
+      updateHero(current);
     };
     var timer = setInterval(rotate, 5000);
     dots.forEach(function (dot, i) {
@@ -76,6 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
         current = i;
         slides[current].classList.add('active');
         dots[current].classList.add('active');
+        updateHero(current);
         timer = setInterval(rotate, 5000);
       });
     });
