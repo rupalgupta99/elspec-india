@@ -104,9 +104,22 @@
   .detail-contact a { color: var(--accent); text-decoration: none; }
   .detail-contact a:hover, .detail-contact a:focus-visible { text-decoration: underline; }
   .d1 { --accent: #2b5d80; } .d2 { --accent: #a2470f; } .d3 { --accent: #1f6b4a; }
-  body.theme-1 { --page-bg: #e8eef3; }
-  body.theme-2 { --page-bg: #fffaf3; }
-  body.theme-3 { --page-bg: #f3faf6; }
+  body.theme-1 { --page-bg: #e8eef3; --form-bg: #f8fbfd; --theme-accent: #2b5d80; }
+  body.theme-2 { --page-bg: #fffaf3; --form-bg: #fffdf9; --theme-accent: #a2470f; }
+  body.theme-3 { --page-bg: #f3faf6; --form-bg: #fbfffc; --theme-accent: #1f6b4a; }
+  .employee-enquiry { max-width: 1100px; margin: 28px auto 0; padding: 28px; border: 1px solid color-mix(in srgb, var(--theme-accent) 28%, #d7e0e5); border-top: 5px solid var(--theme-accent); border-radius: 14px; background: var(--form-bg, #fff); box-shadow: 0 2px 10px rgba(27,42,54,.08); transition: background-color .6s ease, border-color .6s ease; }
+  .employee-enquiry h2 { margin: 0 0 6px; color: var(--theme-accent); }
+  .employee-enquiry > p { margin: 0; color: #34495b; }
+  .employee-enquiry .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px; }
+  .employee-enquiry .form-grid .full { grid-column: 1 / -1; }
+  .employee-enquiry label { display: block; margin-bottom: 6px; font-size: .82rem; font-weight: 600; color: #1b2a36; }
+  .employee-enquiry input, .employee-enquiry textarea { box-sizing: border-box; width: 100%; padding: 11px 14px; border: 1px solid #cbd7de; border-radius: 6px; font: inherit; background: rgba(255,255,255,.8); }
+  .employee-enquiry textarea { min-height: 100px; resize: vertical; }
+  .employee-enquiry button { margin-top: 18px; padding: 11px 18px; border: 0; border-radius: 6px; color: #fff; background: var(--theme-accent); font: inherit; font-weight: 700; cursor: pointer; transition: background-color .6s ease; }
+  .employee-enquiry button:hover, .employee-enquiry button:focus-visible { filter: brightness(.9); }
+  .employee-enquiry .form-status { min-height: 1.3em; margin: 12px 0 0; font-size: .88rem; font-weight: 600; }
+  .employee-enquiry .form-status.success { color: #1d7a4c; }
+  .employee-enquiry .form-status.error { color: #c0392b; }
   @keyframes swap { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 
   @media (max-width: 700px) {
@@ -114,6 +127,9 @@
     .detail { padding: 18px 20px; }
     .detail p { font-size: 1rem; }
     .detail-contact { flex-direction: column; gap: 4px; }
+    .employee-enquiry { padding: 20px; }
+    .employee-enquiry .form-grid { grid-template-columns: 1fr; }
+    .employee-enquiry .form-grid .full { grid-column: auto; }
     .carousel { --pw: 150px; flex-direction: column; height: 620px; }
     .info, .p2 .info { left: 180px; right: 14px; top: 22px; bottom: 18px; }
     .info h2 { font-size: 1.2rem; }
@@ -204,6 +220,45 @@
   </div>
 </div>
 
+<section class="employee-enquiry" aria-labelledby="employee-enquiry-title">
+  <h2 id="employee-enquiry-title">Enquire Now</h2>
+  <p>Tell us about your power quality requirements and our team will get back to you shortly.</p>
+  <form class="enquire-form" action="https://crm.zoho.in/crm/WebToLeadForm" name="WebToLeads1336117000001430006" method="POST" accept-charset="UTF-8">
+    <input type="text" style="display:none;" name="xnQsjsdp" value="a3e55d94619e0d04d292387b870147189e83aa7a58be972419e7e2eb98df0650">
+    <input type="hidden" name="zc_gad" value="">
+    <input type="text" style="display:none;" name="xmIwtLD" value="2c5b650958d11eccdb090cf896c49e41f637bff9f0b6198fb6507e2df59ca2fc12ccc6a311bd3a6360fb33c42dc0348b">
+    <input type="text" style="display:none;" name="actionType" value="TGVhZHM=">
+    <input type="text" style="display:none;" name="returnURL" value="https://www.elspec.in">
+    <input type="text" style="display:none;" name="aG9uZXlwb3Q" value="">
+    <input type="hidden" id="LEADCF52" name="LEADCF52" value="">
+    <input type="hidden" name="Lead Source" value="Website lead">
+    <div class="form-grid">
+      <div>
+        <label for="employee-name">Full Name</label>
+        <input id="employee-name" name="Last Name" type="text" required>
+      </div>
+      <div>
+        <label for="employee-company">Company</label>
+        <input id="employee-company" name="Company" type="text" required>
+      </div>
+      <div>
+        <label for="employee-email">Email</label>
+        <input id="employee-email" name="Email" type="email" required>
+      </div>
+      <div>
+        <label for="employee-phone">Phone</label>
+        <input id="employee-phone" name="Phone" type="tel" required>
+      </div>
+      <div class="full">
+        <label for="employee-message">Message</label>
+        <textarea id="employee-message" name="Description" required></textarea>
+      </div>
+    </div>
+    <button type="submit">Submit Enquiry</button>
+    <p class="form-status" aria-live="polite"></p>
+  </form>
+</section>
+
 <script>
   const panels  = document.querySelectorAll('#carousel .panel');
   const details = document.querySelectorAll('#details .detail');
@@ -221,6 +276,30 @@
     p.addEventListener('focus',      () => activate(p));
     p.addEventListener('click',      () => activate(p));
   });
+
+  const enquiryForm = document.querySelector('.employee-enquiry .enquire-form');
+  if (enquiryForm) {
+    enquiryForm.addEventListener('submit', event => {
+      event.preventDefault();
+      const status = enquiryForm.querySelector('.form-status');
+      const dateField = enquiryForm.querySelector('#LEADCF52');
+      const today = new Date();
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      dateField.value = `${months[today.getMonth()]} ${today.getDate()}, ${today.getFullYear()}`;
+      fetch(enquiryForm.action, { method: 'POST', mode: 'no-cors', body: new FormData(enquiryForm) })
+        .then(() => {
+          status.textContent = 'Thanks! Your enquiry has been noted. Our team will get back to you shortly.';
+          status.classList.remove('error');
+          status.classList.add('success');
+          enquiryForm.reset();
+        })
+        .catch(() => {
+          status.textContent = 'Something went wrong sending your enquiry — please email us directly at info@elspec.in.';
+          status.classList.remove('success');
+          status.classList.add('error');
+        });
+    });
+  }
 </script>
 
 <!-- IMAGES: for your live website, delete this block and use file paths instead, e.g.
