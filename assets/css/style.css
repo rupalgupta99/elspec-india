@@ -498,6 +498,42 @@ li.open .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
 .testi-full-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
 .testi-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; }
 .testi-card .testi-quote { font-size: 1rem; text-align: left; margin-bottom: 16px; }
+.testimonial-card {
+  --navy: var(--navy-dark);
+  --orange: var(--accent);
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 180px;
+  gap: 28px;
+  align-items: stretch;
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--orange);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+}
+.testimonial-card__eyebrow { margin: 0 0 8px; color: var(--orange); font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.testimonial-card h2 { margin: 0 0 12px; color: var(--navy); font-size: 1.45rem; }
+.testimonial-card__quote { margin: 0 0 6px; color: var(--navy); font-size: 1.15rem; font-weight: 700; }
+.testimonial-card__source { margin: 0; color: var(--text-muted); font-size: .9rem; }
+.testimonial-card__figures { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 24px; }
+.testimonial-card__figures div { padding: 12px; border-radius: 8px; background: #f5f8fa; }
+.testimonial-card__figures strong { display: block; color: var(--navy); font-size: 1.05rem; }
+.testimonial-card__figures span { display: block; margin-top: 4px; color: var(--text-muted); font-size: .76rem; line-height: 1.35; }
+.testimonial-card__footer { margin: 22px 0 0; color: var(--navy); font-size: .84rem; font-weight: 700; }
+.testimonial-card__certificate { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
+.testimonial-card__certificate-button { display: block; width: 100%; padding: 0; border: 1px solid var(--border); border-radius: 6px; background: #fff; cursor: zoom-in; overflow: hidden; }
+.testimonial-card__certificate-button:focus-visible, .testimonial-card__view-link:focus-visible, .testimonial-card__dialog-close:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+.testimonial-card__certificate-button img { display: block; width: 100%; height: 210px; object-fit: cover; object-position: top; }
+.testimonial-card__view-link { padding: 0; border: 0; background: none; color: var(--navy); font: inherit; font-size: .84rem; font-weight: 700; text-decoration: underline; cursor: pointer; }
+.testimonial-card__dialog { width: min(92vw, 820px); max-height: 92vh; padding: 0; border: 0; border-radius: var(--radius); background: #fff; box-shadow: 0 20px 70px rgba(0,0,0,.35); }
+.testimonial-card__dialog::backdrop { background: rgba(10, 25, 35, .78); }
+.testimonial-card__dialog-inner { padding: 18px; }
+.testimonial-card__dialog-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 12px; }
+.testimonial-card__dialog-header h2 { margin: 0; color: var(--navy); font-size: 1.1rem; }
+.testimonial-card__dialog-close { width: 34px; height: 34px; border: 1px solid var(--border); border-radius: 50%; background: #fff; color: var(--navy); font-size: 1.4rem; line-height: 1; cursor: pointer; }
+.testimonial-card__dialog img { display: block; width: 100%; max-height: calc(92vh - 90px); object-fit: contain; }
 
 /* ---------- Footer ---------- */
 footer.site-footer { background: var(--navy-dark); color: #b9cdd6; padding: 48px 0 20px; font-size: .88rem; }
@@ -519,6 +555,9 @@ footer.site-footer { background: var(--navy-dark); color: #b9cdd6; padding: 48px
   .clients-full-grid { grid-template-columns: repeat(3, 1fr); }
   .audit-steps { grid-template-columns: repeat(2, 1fr); }
   .testi-full-grid { grid-template-columns: 1fr; }
+  .testimonial-card { grid-template-columns: 1fr; }
+  .testimonial-card__certificate { max-width: 220px; margin: 0 auto; }
+  .testimonial-card__figures { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .dropdown { width: 380px; }
   .mega-grid { grid-template-columns: 1fr; }
