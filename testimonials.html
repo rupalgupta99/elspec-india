@@ -175,9 +175,40 @@
         <div class="testi-person">Placeholder Name</div>
         <div class="testi-role">Operations Manager, Placeholder Pvt. Ltd.</div>
       </div>
+      <article class="testimonial-card">
+        <div class="testimonial-card__content">
+          <p class="testimonial-card__eyebrow">Customer success</p>
+          <h2>Pratibha Syntex Ltd.</h2>
+          <p class="testimonial-card__quote">“We confirm that equipment performance is good.”</p>
+          <p class="testimonial-card__source">Authorized Signatory, Pratibha Syntex Ltd. (textile manufacturer)</p>
+          <div class="testimonial-card__figures" aria-label="Measured results">
+            <div><strong>0.962 <span aria-hidden="true">→</span> 0.996</strong><span>Power factor</span></div>
+            <div><strong>8%+</strong><span>Lower kVA demand and current</span></div>
+            <div><strong>5.18%</strong><span>Lower kW demand</span></div>
+            <div><strong>44%</strong><span>Lower current harmonics (THD-I)</span></div>
+          </div>
+          <p class="testimonial-card__footer">Elspec Equalizer EQ420 - 420 kVAr real-time power factor correction</p>
+        </div>
+        <div class="testimonial-card__certificate">
+          <button type="button" class="testimonial-card__certificate-button" data-certificate-open aria-label="View Pratibha Syntex certificate full size">
+            <img src="assets/img/testimonials/pratibha-certificate.png" alt="Pratibha Syntex customer certificate letter">
+          </button>
+          <button type="button" class="testimonial-card__view-link" data-certificate-open>View certificate</button>
+        </div>
+      </article>
     </div>
   </div>
 </section>
+
+<dialog class="testimonial-card__dialog" data-certificate-dialog aria-labelledby="testimonial-certificate-title">
+  <div class="testimonial-card__dialog-inner">
+    <div class="testimonial-card__dialog-header">
+      <h2 id="testimonial-certificate-title">Pratibha Syntex certificate</h2>
+      <button type="button" class="testimonial-card__dialog-close" data-certificate-close aria-label="Close certificate">×</button>
+    </div>
+    <img src="assets/img/testimonials/pratibha-certificate.png" alt="Pratibha Syntex customer certificate letter, full size">
+  </div>
+</dialog>
 
 <section class="section-alt" id="contact-cta">
   <div class="container" style="text-align:center;">
@@ -233,5 +264,20 @@
 </footer>
 
 <script src="assets/js/main.js"></script>
+<script>
+  (function () {
+    var dialog = document.querySelector('[data-certificate-dialog]');
+    var openers = document.querySelectorAll('[data-certificate-open]');
+    var closer = document.querySelector('[data-certificate-close]');
+    if (!dialog) return;
+    openers.forEach(function (opener) {
+      opener.addEventListener('click', function () { dialog.showModal(); });
+    });
+    closer.addEventListener('click', function () { dialog.close(); });
+    dialog.addEventListener('click', function (event) {
+      if (event.target === dialog) dialog.close();
+    });
+  }());
+</script>
 </body>
 </html>
