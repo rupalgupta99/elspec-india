@@ -196,6 +196,26 @@
           <button type="button" class="testimonial-card__view-link" data-certificate-open>View certificate</button>
         </div>
       </article>
+      <article class="dinesh-testimonial-card" id="dinesh-testimonial">
+        <div class="dinesh-testimonial-card__body">
+          <p class="dinesh-testimonial-card__quote">We are very much pleased with the quality and performance of the system and it was successful in fulfilling our site requirement.</p>
+          <p class="dinesh-testimonial-card__by">Sunil Shah, Vice President (Commercial &amp; IR), <b>Shri Dinesh Mills Ltd.</b>, Vadodara</p>
+          <p class="dinesh-testimonial-card__story">Shri Dinesh Mills found frequent current shoot-ups, voltage dips and harmonic spikes in their plant. A 210&nbsp;kVAr thyristor-based real-time power factor compensation system (Activar Plus, 7% detuned reactor) was installed in parallel with their transformer feeder. Power factor improved to 0.99&nbsp;IND and stayed near 0.999&nbsp;IND even under high switching loads.</p>
+        </div>
+        <div class="dinesh-testimonial-card__stats">
+          <div><strong>0.77 &rarr; 0.99 IND</strong><span>Power factor</span></div>
+          <div><strong>100%</strong><span>Voltage dip eliminated</span></div>
+          <div><strong>16%</strong><span>Lower kVA demand</span></div>
+          <div><strong>30%</strong><span>Lower peak current</span></div>
+        </div>
+        <div class="dinesh-testimonial-card__certificate">
+          <button type="button" class="dinesh-testimonial-card__thumb" data-dinesh-certificate-open aria-label="View the Shri Dinesh Mills certificate in full size">
+            <img src="assets/img/testimonials/dinesh-mills-certificate.webp" alt="Shri Dinesh Mills customer certificate letter">
+          </button>
+          <p><b>Customer certificate</b><button type="button" class="dinesh-testimonial-card__open" data-dinesh-certificate-open>View certificate</button></p>
+        </div>
+        <div class="dinesh-testimonial-card__footer"><b>Activar Plus</b> &middot; 210&nbsp;kVAr real-time power factor correction, 7% detuned reactor</div>
+      </article>
     </div>
   </div>
 </section>
@@ -207,6 +227,14 @@
       <button type="button" class="testimonial-card__dialog-close" data-certificate-close aria-label="Close certificate">×</button>
     </div>
     <img src="assets/img/testimonials/pratibha-certificate.png" alt="Pratibha Syntex customer certificate letter, full size">
+  </div>
+</dialog>
+
+<dialog class="dinesh-testimonial-card__dialog" data-dinesh-certificate-dialog aria-labelledby="dinesh-certificate-title">
+  <div class="dinesh-testimonial-card__dialog-inner">
+    <h2 id="dinesh-certificate-title">Shri Dinesh Mills certificate</h2>
+    <button type="button" class="dinesh-testimonial-card__close" data-dinesh-certificate-close aria-label="Close certificate">×</button>
+    <img src="assets/img/testimonials/dinesh-mills-certificate.webp" alt="Shri Dinesh Mills customer certificate letter, full size">
   </div>
 </dialog>
 
@@ -269,6 +297,21 @@
     var dialog = document.querySelector('[data-certificate-dialog]');
     var openers = document.querySelectorAll('[data-certificate-open]');
     var closer = document.querySelector('[data-certificate-close]');
+    if (!dialog) return;
+    openers.forEach(function (opener) {
+      opener.addEventListener('click', function () { dialog.showModal(); });
+    });
+    closer.addEventListener('click', function () { dialog.close(); });
+    dialog.addEventListener('click', function (event) {
+      if (event.target === dialog) dialog.close();
+    });
+  }());
+</script>
+<script>
+  (function () {
+    var dialog = document.querySelector('[data-dinesh-certificate-dialog]');
+    var openers = document.querySelectorAll('[data-dinesh-certificate-open]');
+    var closer = document.querySelector('[data-dinesh-certificate-close]');
     if (!dialog) return;
     openers.forEach(function (opener) {
       opener.addEventListener('click', function () { dialog.showModal(); });
