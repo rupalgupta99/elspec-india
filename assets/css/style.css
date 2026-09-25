@@ -361,7 +361,7 @@ li.open .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
 .testi-quote { font-size: 1.2rem; color: var(--navy-dark); font-style: italic; margin-bottom: 22px; }
 .testi-quote::before { content: "“"; color: var(--accent); font-size: 2rem; line-height: 0; vertical-align: -8px; margin-right: 4px; }
 .testi-person { font-weight: 700; color: var(--navy); }
-.testi-role { font-size: .85rem; color: var(--text-muted); }
+.testi-role { max-width: 560px; margin: 4px auto 0; font-size: .85rem; line-height: 1.5; color: var(--text-muted); }
 .testi-nav { display: flex; justify-content: center; gap: 14px; margin-top: 30px; }
 .testi-nav button { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--border); background: #fff; cursor: pointer; font-size: 1rem; color: var(--navy); }
 .testi-nav button:hover { background: var(--navy); color: #fff; }
