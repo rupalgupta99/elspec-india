@@ -516,6 +516,7 @@ li.open .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
 }
 .testimonials-track > * { flex: 0 0 min(760px, calc(100vw - 48px)); }
 .testi-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; }
+.testimonial-empty-card { min-height: 300px; }
 .testi-card .testi-quote { font-size: 1rem; text-align: left; margin-bottom: 16px; }
 .testimonial-card {
   --navy: var(--navy-dark);
