@@ -112,6 +112,14 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  /* ---------- Customer testimonial card marquee ---------- */
+  var testimonialTrack = document.querySelector('.testimonials-slider .testimonials-track');
+  if (testimonialTrack && testimonialTrack.children.length) {
+    Array.prototype.slice.call(testimonialTrack.children).forEach(function (card) {
+      testimonialTrack.appendChild(card.cloneNode(true));
+    });
+  }
+
   /* ---------- Testimonials carousel ---------- */
   var testiSlides = document.querySelectorAll('.testi-slide');
   var prevBtn = document.querySelector('.testi-nav .prev');
