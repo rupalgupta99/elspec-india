@@ -104,6 +104,49 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  /* ---------- Past exhibition photo carousel ---------- */
+  document.querySelectorAll('[data-event-gallery]').forEach(function (gallery) {
+    var track = gallery.querySelector('.event-gallery__track');
+    var slides = gallery.querySelectorAll('.event-gallery__slide');
+    var dots = gallery.querySelectorAll('.event-gallery__dots button');
+    var prev = gallery.querySelector('[data-gallery-prev]');
+    var next = gallery.querySelector('[data-gallery-next]');
+    if (!track || slides.length < 2 || dots.length !== slides.length) return;
+
+    var current = 0;
+    var timer;
+    var showSlide = function (index) {
+      current = (index + slides.length) % slides.length;
+      slides.forEach(function (slide, i) {
+        slide.classList.toggle('is-active', i === current);
+        slide.setAttribute('aria-hidden', String(i !== current));
+      });
+      dots.forEach(function (dot, i) {
+        if (i === current) dot.setAttribute('aria-current', 'true');
+        else dot.removeAttribute('aria-current');
+      });
+    };
+    var startTimer = function () {
+      window.clearInterval(timer);
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        timer = window.setInterval(function () { showSlide(current + 1); }, 5000);
+      }
+    };
+
+    if (prev) prev.addEventListener('click', function () { showSlide(current - 1); startTimer(); });
+    if (next) next.addEventListener('click', function () { showSlide(current + 1); startTimer(); });
+    dots.forEach(function (dot, i) {
+      dot.addEventListener('click', function () { showSlide(i); startTimer(); });
+    });
+    gallery.addEventListener('mouseenter', function () { window.clearInterval(timer); });
+    gallery.addEventListener('mouseleave', startTimer);
+    gallery.addEventListener('focusin', function () { window.clearInterval(timer); });
+    gallery.addEventListener('focusout', function (event) {
+      if (!gallery.contains(event.relatedTarget)) startTimer();
+    });
+    startTimer();
+  });
+
   /* ---------- Case-study card marquee ---------- */
   var caseTrack = document.querySelector('.cases-slider .cases-grid');
   if (caseTrack && caseTrack.children.length) {
