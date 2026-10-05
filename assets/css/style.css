@@ -626,6 +626,18 @@ li.open .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
 .performance-testimonials__dots { display: flex; align-items: center; justify-content: center; gap: 9px; }
 .performance-testimonials__dot { width: 9px; height: 9px; padding: 0; border: 0; border-radius: 50%; background: rgba(255,255,255,.45); cursor: pointer; }
 .performance-testimonials__dot[aria-current="true"] { width: 24px; border-radius: 5px; background: var(--accent-light); }
+.home-testimonials .performance-testimonials { margin: 0; }
+.home-testimonials .performance-testimonials__carousel { min-height: 0; padding: 0; overflow: visible; border-radius: 0; background: transparent; color: var(--text); }
+.home-testimonials .performance-testimonials__slides { min-height: 0; }
+.home-testimonials .performance-testimonial { text-align: center; align-items: center; }
+.home-testimonials .performance-testimonial h4 { order: 2; margin: 4px 0 0; color: var(--navy); font-size: 1rem; }
+.home-testimonials .performance-testimonial p { order: 1; max-width: 760px; margin-bottom: 18px; color: var(--navy-dark); font-size: 1.2rem; font-style: italic; line-height: 1.6; }
+.home-testimonials .performance-testimonial p::before { content: "“"; margin-right: 4px; color: var(--accent); font-size: 2rem; line-height: 0; vertical-align: -8px; }
+.home-testimonials .performance-testimonials__controls { gap: 14px; margin-top: 30px; }
+.home-testimonials .performance-testimonials__arrow { width: 40px; height: 40px; border-color: var(--border); background: #fff; color: var(--navy); }
+.home-testimonials .performance-testimonials__arrow:hover { border-color: var(--navy); background: var(--navy); color: #fff; }
+.home-testimonials .performance-testimonials__dot { background: var(--border); }
+.home-testimonials .performance-testimonials__dot[aria-current="true"] { background: var(--accent); }
 .performance-gallery__stage { display: grid; grid-template-columns: 1.2fr .8fr; gap: 40px; align-items: center; padding: 0; }
 .performance-gallery__deck { --gallery-deck-height: clamp(460px, 68vh, 720px); position: relative; height: var(--gallery-deck-height); overflow: hidden; border: 1px solid #2f7592; border-radius: 6px; background: radial-gradient(ellipse at 50% 45%, var(--gallery-teal-light) 0%, var(--gallery-teal) 55%, var(--gallery-ink) 100%); touch-action: pan-y; }
 .performance-gallery__slide { position: absolute; top: 50%; left: 50%; width: min(86%, calc(var(--gallery-deck-height) * .9 * var(--gallery-aspect))); aspect-ratio: var(--gallery-aspect); padding: 0; border: 0; background: #fff; box-shadow: 0 22px 50px rgba(0,0,0,.5); cursor: pointer; transition: transform .7s cubic-bezier(.2,.8,.2,1), opacity .5s, filter .5s; }

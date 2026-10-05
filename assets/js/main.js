@@ -180,6 +180,78 @@ document.addEventListener('DOMContentLoaded', function () {
     setInterval(function () { showTesti(tCurrent + 1); }, 6000);
   }
 
+  /* ---------- Client performance testimonial carousels ---------- */
+  document.querySelectorAll('[data-performance-testimonials]').forEach(function (carousel) {
+    var slides = Array.prototype.slice.call(carousel.querySelectorAll('[data-performance-testimonial]'));
+    var dots = carousel.querySelector('[data-performance-testimonials-dots]');
+    var previous = carousel.querySelector('[data-performance-testimonials-previous]');
+    var next = carousel.querySelector('[data-performance-testimonials-next]');
+    if (!dots || !previous || !next || slides.length < 2) return;
+
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var current = 0;
+    var timer = null;
+    var paused = false;
+
+    function show(index) {
+      current = (index + slides.length) % slides.length;
+      slides.forEach(function (slide, slideIndex) {
+        var active = slideIndex === current;
+        slide.classList.toggle('is-active', active);
+        slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+      });
+      Array.prototype.forEach.call(dots.children, function (dot, dotIndex) {
+        var active = dotIndex === current;
+        dot.setAttribute('aria-current', active ? 'true' : 'false');
+        dot.setAttribute('aria-selected', active ? 'true' : 'false');
+        dot.tabIndex = active ? 0 : -1;
+      });
+      schedule();
+    }
+
+    function schedule() {
+      window.clearTimeout(timer);
+      if (reducedMotion || paused) return;
+      timer = window.setTimeout(function () { show(current + 1); }, 7000);
+    }
+
+    slides.forEach(function (_slide, index) {
+      var dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'performance-testimonials__dot';
+      dot.setAttribute('role', 'tab');
+      dot.setAttribute('aria-label', 'Show testimonial ' + (index + 1));
+      dot.addEventListener('click', function () { show(index); });
+      dots.appendChild(dot);
+    });
+
+    previous.addEventListener('click', function () { show(current - 1); });
+    next.addEventListener('click', function () { show(current + 1); });
+    carousel.addEventListener('mouseenter', function () {
+      paused = true;
+      window.clearTimeout(timer);
+    });
+    carousel.addEventListener('mouseleave', function () {
+      paused = false;
+      schedule();
+    });
+    carousel.addEventListener('focusin', function () {
+      paused = true;
+      window.clearTimeout(timer);
+    });
+    carousel.addEventListener('focusout', function (event) {
+      if (!carousel.contains(event.relatedTarget)) {
+        paused = false;
+        schedule();
+      }
+    });
+    carousel.addEventListener('keydown', function (event) {
+      if (event.key === 'ArrowLeft') show(current - 1);
+      if (event.key === 'ArrowRight') show(current + 1);
+    });
+    show(current);
+  });
+
   /* ---------- Enquiry form -> Zoho CRM (Web-to-Lead, submitted via fetch so the visitor never leaves the page) ---------- */
   var form = document.querySelector('.enquire-form');
   if (form) {
