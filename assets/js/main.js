@@ -70,6 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
       ['Elspec India', 'When Power Meets Quality', "Measure | Control | Resolve — bringing Elspec's globally proven power quality analyzers, monitoring software and real-time compensation solutions to Indian industry, utilities and commercial enterprises.", 'Know More', 'index.html#what-we-do', 'Contact Us', 'index.html#contact'],
       ['Elspec India', 'When Power Meets Quality', "Measure | Control | Resolve — bringing Elspec's globally proven power quality analyzers, monitoring software and real-time compensation solutions to Indian industry, utilities and commercial enterprises.", 'Know More', 'index.html#what-we-do', 'Contact Us', 'index.html#contact'],
       ['Elspec India', 'When Power Meets Quality', "Measure | Control | Resolve — bringing Elspec's globally proven power quality analyzers, monitoring software and real-time compensation solutions to Indian industry, utilities and commercial enterprises.", 'Know More', 'index.html#what-we-do', 'Contact Us', 'index.html#contact'],
+      ['Elspec India', 'When Power Meets Quality', "Measure | Control | Resolve — bringing Elspec's globally proven power quality analyzers, monitoring software and real-time compensation solutions to Indian industry, utilities and commercial enterprises.", 'Know More', 'index.html#what-we-do', 'Contact Us', 'index.html#contact'],
     ];
     var updateHero = function (i) {
       var copy = heroContent[i];
