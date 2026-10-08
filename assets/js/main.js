@@ -48,8 +48,19 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   document.addEventListener('click', function (e) {
+    // The hamburger button handles its own toggle; don't let the outside-click close it again.
+    if (e.target.closest('.nav-toggle-mobile')) return;
+
     var navItem = e.target.closest('nav.main-nav li');
     if (!navItem) {
+      closeDropdowns();
+      // Only close the phone menu when the tap lands outside the open panel.
+      if (!e.target.closest('nav.main-nav')) closeMobileNav();
+    }
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
       closeDropdowns();
       closeMobileNav();
     }

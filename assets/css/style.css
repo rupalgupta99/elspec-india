@@ -366,6 +366,42 @@ li.open .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
 .testi-nav button { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--border); background: #fff; cursor: pointer; font-size: 1rem; color: var(--navy); }
 .testi-nav button:hover { background: var(--navy); color: #fff; }
 
+/* ---------- Team ---------- */
+#team { scroll-margin-top: 90px; }
+.team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.team-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.team-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.team-photo {
+  height: 300px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: linear-gradient(160deg, var(--bg-alt), #e3ecf0);
+}
+.team-photo img { height: 100%; width: auto; max-width: 100%; object-fit: contain; object-position: bottom center; }
+.team-body { display: flex; flex-direction: column; flex: 1; padding: 24px; }
+.team-body h3 { font-size: 1.15rem; margin-bottom: 2px; }
+.team-role { color: var(--accent); font-weight: 700; font-size: .88rem; margin-bottom: 14px; }
+@media (min-width: 981px) { .team-role { min-height: 3.2em; } }
+.team-contact { display: grid; gap: 4px; font-size: .9rem; margin-bottom: 18px; }
+.team-contact b { display: inline-block; min-width: 4.4em; color: var(--text-muted); font-weight: 600; }
+.team-contact a { font-weight: 600; color: var(--navy); overflow-wrap: anywhere; }
+.team-contact a:hover { color: var(--accent); }
+.team-focus { border-top: 1px solid var(--border); padding-top: 16px; }
+.team-focus h4 { font-size: .95rem; color: var(--navy); margin-bottom: 6px; }
+.team-focus p { font-size: .88rem; margin-bottom: 0; }
+.team-handles { margin-top: auto; padding-top: 20px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.team-handles img { height: 72px; width: auto; max-width: 100%; object-fit: contain; }
+.team-handles img.team-handles-logo { height: 40px; }
+
 /* ---------- Contact ---------- */
 .contact-section { background: var(--navy-dark); color: #dfeaf0; }
 .contact-section h2, .contact-section .section-head p { color: #fff; }
@@ -654,6 +690,8 @@ footer.site-footer { background: var(--navy-dark); color: #b9cdd6; padding: 48px
   .dropdown { width: 380px; }
   .mega-grid { grid-template-columns: 1fr; }
   .blog-grid, .webinar-grid, .awards-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-card:last-child:nth-child(odd) { grid-column: 1 / -1; max-width: calc(50% - 14px); justify-self: center; }
 }
 @media (max-width: 760px) {
   nav.main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 280px; background: var(--navy); flex-direction: column; padding: 80px 20px 20px; transition: right .25s ease; overflow-y: auto; }
@@ -673,7 +711,11 @@ footer.site-footer { background: var(--navy-dark); color: #b9cdd6; padding: 48px
   .mega-featured { background: rgba(255,255,255,.08); border-top-color: rgba(255,255,255,.12); }
   .mega-featured-title { color: #fff; }
   .mega-featured-desc { color: #a9c1cb; }
-  .nav-toggle-mobile { display: flex; }
+  .nav-toggle-mobile { display: flex; position: relative; z-index: 110; padding: 12px; margin-right: -12px; }
+  .nav-toggle-mobile span { transition: transform .2s ease, opacity .2s ease; }
+  .nav-toggle-mobile[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle-mobile[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-toggle-mobile[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
   .cards-grid { grid-template-columns: 1fr; }
   .cases-grid { grid-template-columns: 1fr; }
   .clients-full-grid { grid-template-columns: repeat(2, 1fr); }
@@ -681,5 +723,7 @@ footer.site-footer { background: var(--navy-dark); color: #b9cdd6; padding: 48px
   .benefits-list { grid-template-columns: 1fr; }
   .blog-grid, .webinar-grid, .awards-grid { grid-template-columns: 1fr; }
   .approvals-grid, .events-columns { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr; }
+  .team-card:last-child:nth-child(odd) { grid-column: auto; max-width: none; }
   .topbar .container { justify-content: center; text-align: center; }
 }
