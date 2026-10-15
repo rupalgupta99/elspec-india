@@ -149,12 +149,66 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   /* ---------- Case-study card marquee ---------- */
-  var caseTrack = document.querySelector('.cases-slider .cases-grid');
-  if (caseTrack && caseTrack.children.length) {
+  document.querySelectorAll('.cases-slider .cases-grid').forEach(function (caseTrack) {
+    if (!caseTrack.children.length) return;
     Array.prototype.slice.call(caseTrack.children).forEach(function (card) {
-      caseTrack.appendChild(card.cloneNode(true));
+      var clone = card.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      if (clone.matches('a, button, [tabindex]')) clone.setAttribute('tabindex', '-1');
+      clone.querySelectorAll('a, button, input, select, textarea, [tabindex]').forEach(function (element) {
+        element.setAttribute('tabindex', '-1');
+      });
+      caseTrack.appendChild(clone);
     });
-  }
+  });
+
+  /* ---------- Industry-award card carousel ---------- */
+  document.querySelectorAll('[data-home-awards-carousel]').forEach(function (carousel) {
+    var track = carousel.querySelector('.home-awards-track');
+    if (!track || !track.children.length) return;
+    var dialog = document.querySelector('[data-home-award-dialog]');
+    var dialogImage = dialog && dialog.querySelector('[data-home-award-dialog-image]');
+    var dialogTitle = dialog && dialog.querySelector('[data-home-award-dialog-title]');
+    var closeButton = dialog && dialog.querySelector('[data-home-award-dialog-close]');
+
+    if (dialog && dialogImage && dialogTitle && closeButton) {
+      carousel.addEventListener('click', function (event) {
+        var card = event.target.closest('[data-home-certificate-image]');
+        if (!card || !carousel.contains(card)) return;
+
+        var certificate = card.querySelector('.home-award-thumb img');
+        var title = card.querySelector('h3');
+        if (!certificate || !title) return;
+
+        dialogTitle.textContent = title.textContent.trim();
+        dialogImage.src = card.getAttribute('data-home-certificate-image');
+        dialogImage.alt = certificate.alt;
+        dialog.showModal();
+        closeButton.focus();
+      });
+
+      closeButton.addEventListener('click', function () {
+        dialog.close();
+      });
+      dialog.addEventListener('click', function (event) {
+        if (event.target === dialog) dialog.close();
+      });
+      dialog.addEventListener('close', function () {
+        dialogImage.removeAttribute('src');
+      });
+    }
+
+    var cards = Array.prototype.slice.call(track.children);
+    cards.forEach(function (card) {
+      var clone = card.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      clone.querySelectorAll('a, button, [tabindex]').forEach(function (element) {
+        element.setAttribute('tabindex', '-1');
+      });
+      track.appendChild(clone);
+    });
+    track.classList.add('is-ready');
+  });
 
   /* ---------- Customer testimonial card marquee ---------- */
   var testimonialTrack = document.querySelector('.testimonials-slider .testimonials-track');
